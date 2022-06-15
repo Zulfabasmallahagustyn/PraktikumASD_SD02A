@@ -23,8 +23,10 @@ int IsEmpty() {
 }
 
 int IsFull() {
-    if(antrian.tail==MAX-1) return 1;
-    else return 0;  
+    if(antrian.tail==MAX-1)
+        return 1;
+    else
+        return 0;  
 }
 
 void Enqueue(int data) {
