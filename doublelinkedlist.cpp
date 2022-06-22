@@ -15,6 +15,27 @@ void init() {
     tail = NULL;
 }
 
+void addFirst(int value) {
+    Node *newNode;
+    newNode = new Node();
+
+    newNode->data = value;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    
+    if (head == NULL) {
+        head = newNode;
+        head->next = NULL;
+        head->prev = NULL;
+        tail = head;
+    } else {
+        newNode->prev = NULL;
+        newNode->next = head;
+        head->prev = newNode;
+        head = newNode;
+    }
+}
+
 void addLast(int value) {
     Node *newNode;
     newNode = new Node();
@@ -42,6 +63,10 @@ int main() {
     addLast(44);
     addLast(55);
     addLast(88);
+
+    addFirst(47);
+    addFirst(89);
+    addFirst(20);
 
     Node *cur;
     cur = head;
