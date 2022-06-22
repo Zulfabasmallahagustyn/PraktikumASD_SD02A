@@ -21,4 +21,12 @@ int main() {
     node2->data = 55;
     node2->prev = node1;
     node2->next = NULL;
+
+    Node *cur;
+    cur = node1;
+    while (cur != NULL) {
+        cout << "(" << cur->data << ")" << " ";
+        cur = cur->next;
+    }
+    cout << endl;
 }
