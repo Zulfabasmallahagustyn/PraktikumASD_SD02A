@@ -8,27 +8,43 @@ struct Node {
     Node *next;
 };
 
+Node *head, *tail;
+
+void init() {
+    head = NULL;
+    tail = NULL;
+}
+
+void addLast(int value) {
+    Node *newNode;
+    newNode = new Node();
+
+    newNode->data = value;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    
+    if (head == NULL) {
+        head = newNode;
+        head->next = NULL;
+        head->prev = NULL;
+        tail = head;
+    } else {
+        newNode->prev = tail;
+        newNode->next = NULL;
+        tail->next = newNode;
+        tail = newNode;
+    }
+}
+
 int main() {
-    Node *node1, *node2, *node3;
+    init();
 
-    node1 = new Node();
-    node2 = new Node();
-    node3 = new Node();
-
-    node1->data = 44;
-    node1->prev = NULL;
-    node1->next = node2;
-
-    node2->data = 55;
-    node2->prev = node1;
-    node2->next = node3;
-
-    node3->data = 88;
-    node3->prev = node2;
-    node3->next = NULL;
+    addLast(44);
+    addLast(55);
+    addLast(88);
 
     Node *cur;
-    cur = node1;
+    cur = head;
     while (cur != NULL) {
         cout << "(" << cur->data << ")" << " ";
         cur = cur->next;
