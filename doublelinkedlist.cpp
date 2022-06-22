@@ -15,6 +15,18 @@ void init() {
     tail = NULL;
 }
 
+int totalNode() {
+    Node *cur;
+
+    cur = head;
+    int total = 0;
+    while (cur != NULL) {
+        cur = cur->next;
+        total++;
+    }
+    return total;
+}
+
 void addFirst(int value) {
     Node *newNode;
     newNode = new Node();
@@ -36,10 +48,33 @@ void addFirst(int value) {
     }
 }
 
+void addLast(int value) {
+    Node *newNode;
+    newNode = new Node();
+
+    newNode->data = value;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    
+    if (head == NULL) {
+        head = newNode;
+        head->next = NULL;
+        head->prev = NULL;
+        tail = head;
+    } else {
+        newNode->prev = tail;
+        newNode->next = NULL;
+        tail->next = newNode;
+        tail = newNode;
+    }
+}
+
 void addMiddle(int position, int value) {
     if (head != NULL) {
         if (position == 0) {
             addFirst(value);
+        } else if (position == totalNode() - 1) {
+            addLast(value);
         } else {
             Node *newNode, *cur, *afterNode;
             newNode = new Node();
@@ -63,27 +98,6 @@ void addMiddle(int position, int value) {
         }
     } else {
         cout << "Cannot add any node. Empty list!" << endl;
-    }
-}
-
-void addLast(int value) {
-    Node *newNode;
-    newNode = new Node();
-
-    newNode->data = value;
-    newNode->prev = NULL;
-    newNode->next = NULL;
-    
-    if (head == NULL) {
-        head = newNode;
-        head->next = NULL;
-        head->prev = NULL;
-        tail = head;
-    } else {
-        newNode->prev = tail;
-        newNode->next = NULL;
-        tail->next = newNode;
-        tail = newNode;
     }
 }
 
@@ -153,5 +167,8 @@ int main() {
     printList();
 
     addMiddle(0, 60);
+    printList();
+
+    addMiddle(5, 77);
     printList();
 }
