@@ -75,6 +75,8 @@ void addMiddle(int position, int value) {
             addFirst(value);
         } else if (position == totalNode() - 1) {
             addLast(value);
+        } else if (position < 0 || position > totalNode()-1) {
+            cout << "Cannot add node. Unreachable index" << endl;
         } else {
             Node *newNode, *cur, *afterNode;
             newNode = new Node();
@@ -170,5 +172,11 @@ int main() {
     printList();
 
     addMiddle(5, 77);
+    printList();
+
+    addMiddle(-1, 73);
+    printList();
+
+    addMiddle(100, 70);
     printList();
 }
