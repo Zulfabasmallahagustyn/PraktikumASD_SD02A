@@ -57,6 +57,23 @@ void addLast(int value) {
     }
 }
 
+void removeFirst() {
+    if (head == NULL) {
+        cout << "Cannot remove any node. Empty list!" << endl;
+    } else {
+        Node *delNode;
+
+        if (head->next != NULL) {
+            delNode = head;
+            head = head->next;
+            head->prev = NULL;
+            delete delNode;
+        } else {
+            head = NULL;
+        }
+    }
+}
+
 int main() {
     init();
 
@@ -67,6 +84,8 @@ int main() {
     addFirst(47);
     addFirst(89);
     addFirst(20);
+
+    removeFirst();
 
     Node *cur;
     cur = head;
