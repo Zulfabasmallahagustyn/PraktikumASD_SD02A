@@ -58,9 +58,7 @@ void addLast(int value) {
 }
 
 void removeFirst() {
-    if (head == NULL) {
-        cout << "Cannot remove any node. Empty list!" << endl;
-    } else {
+    if (head != NULL) {
         Node *delNode;
 
         if (head->next != NULL) {
@@ -71,6 +69,8 @@ void removeFirst() {
         } else {
             head = NULL;
         }
+    } else {
+        cout << "Cannot remove any node. Empty list!" << endl;
     }
 }
 
