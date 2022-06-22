@@ -36,6 +36,32 @@ void addFirst(int value) {
     }
 }
 
+void addMiddle(int position, int value) {
+    if (head != NULL) {
+        Node *newNode, *cur, *afterNode;
+        newNode = new Node();
+
+        newNode->data = value;
+        newNode->prev = NULL;
+        newNode->next = NULL;
+
+        cur = head;
+        int index = 0;
+        while (index < position-1) {
+            cur = cur->next;
+            index++;
+        }
+
+        afterNode = cur->next;
+        newNode->prev = cur;
+        newNode->next = afterNode;
+        cur->next = newNode;
+        afterNode->prev = newNode;
+    } else {
+        cout << "Cannot add any node. Empty list!" << endl;
+    }
+}
+
 void addLast(int value) {
     Node *newNode;
     newNode = new Node();
@@ -117,5 +143,8 @@ int main() {
     printList();
 
     removeLast();
+    printList();
+
+    addMiddle(1, 89);
     printList();
 }
