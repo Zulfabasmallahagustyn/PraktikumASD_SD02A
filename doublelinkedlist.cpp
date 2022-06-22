@@ -137,6 +137,35 @@ void removeLast() {
     }
 }
 
+void removeMiddle(int position) {
+    if (head != NULL) {
+        if (position == 0) {
+            removeFirst();
+        } else if (position == totalNode() - 1) {
+            removeLast();
+        } else if (position < 0 || position > totalNode()-1) {
+            cout << "Cannot add node. Unreachable index" << endl;
+        } else {
+            Node *delNode, *cur, *afterNode;
+
+            cur = head;
+            int index = 0;
+            while (index < position-1) {
+                cur = cur->next;
+                index++;
+            }
+
+            delNode = cur->next;
+            afterNode = delNode->next;
+            cur->next = afterNode;
+            afterNode->prev = cur;
+            delete delNode;
+        }
+    } else {
+        cout << "Cannot add any node. Empty list!" << endl;
+    }
+}
+
 void printList() {
     Node *cur;
     cur = head;
@@ -178,5 +207,8 @@ int main() {
     printList();
 
     addMiddle(100, 70);
+    printList();
+
+    removeMiddle(2);
     printList();
 }
