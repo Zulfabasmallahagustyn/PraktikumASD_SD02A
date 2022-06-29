@@ -176,6 +176,19 @@ void printList() {
     cout << endl;
 }
 
+void clear() {
+    Node *cur, *delNode;
+    cur = head;
+
+    while (cur != NULL) {
+        delNode = cur;
+        cur = cur->next;
+        delete delNode;
+    }
+
+    head = NULL;
+}
+
 int main() {
     init();
 }
