@@ -40,7 +40,7 @@ int totalNode() {
     return total;
 }
 
-// TODO
+// DONE
 void addFirst(int value) {
     Node *newNode;
     newNode = new Node();
@@ -63,7 +63,7 @@ void addFirst(int value) {
     }
 }
 
-// TODO
+// UNGUIDED
 void addMiddle(int position, int value) {
     if (head != NULL) {
         if (position == 0) {
@@ -98,7 +98,7 @@ void addMiddle(int position, int value) {
     }
 }
 
-// TODO
+// DONE
 void addLast(int value) {
     Node *newNode;
     newNode = new Node();
@@ -187,7 +187,7 @@ void removeLast() {
     }
 }
 
-// TODO
+// DONE
 void printList() {
     Node *cur;
     cur = head;
@@ -215,9 +215,9 @@ void clear() {
 int main() {
     init();
 
-    // addLast(88);
-    // addLast(99);
-    // printList();
+    addLast(88);
+    addLast(99);
+    printList();
 
     addFirst(33);
     addFirst(66);
