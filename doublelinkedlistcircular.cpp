@@ -15,6 +15,7 @@ void init() {
     tail = NULL;
 }
 
+// TODO
 int totalNode() {
     Node *cur;
 
@@ -27,6 +28,7 @@ int totalNode() {
     return total;
 }
 
+// TODO
 void addFirst(int value) {
     Node *newNode;
     newNode = new Node();
@@ -48,6 +50,7 @@ void addFirst(int value) {
     }
 }
 
+// TODO
 void addLast(int value) {
     Node *newNode;
     newNode = new Node();
@@ -69,6 +72,7 @@ void addLast(int value) {
     }
 }
 
+// TODO
 void addMiddle(int position, int value) {
     if (head != NULL) {
         if (position == 0) {
@@ -103,6 +107,7 @@ void addMiddle(int position, int value) {
     }
 }
 
+// TODO
 void removeFirst() {
     if (head != NULL) {
         Node *delNode;
@@ -120,6 +125,7 @@ void removeFirst() {
     }
 }
 
+// TODO
 void removeLast() {
     if (head != NULL) {
         Node *delNode;
@@ -137,6 +143,7 @@ void removeLast() {
     }
 }
 
+// TODO
 void removeMiddle(int position) {
     if (head != NULL) {
         if (position == 0) {
@@ -166,6 +173,7 @@ void removeMiddle(int position) {
     }
 }
 
+// TODO
 void printList() {
     Node *cur;
     cur = head;
@@ -176,6 +184,7 @@ void printList() {
     cout << endl;
 }
 
+// TODO
 void clear() {
     Node *cur, *delNode;
     cur = head;
