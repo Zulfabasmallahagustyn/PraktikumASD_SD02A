@@ -122,7 +122,7 @@ void addLast(int value) {
     }
 }
 
-// TODO
+// DONE
 void removeFirst() {
     if (head != NULL) {
         Node *delNode;
@@ -205,7 +205,7 @@ void printList() {
     }
 }
 
-// TODO
+// DONE
 void clear() {
     Node *cur, *delNode;
     cur = head;
