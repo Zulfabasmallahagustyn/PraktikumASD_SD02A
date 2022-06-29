@@ -51,13 +51,14 @@ void addFirst(int value) {
     
     if (head == NULL) {
         head = newNode;
-        head->next = NULL;
-        head->prev = NULL;
+        head->next = head;
+        head->prev = head;
         tail = head;
     } else {
-        newNode->prev = NULL;
+        newNode->prev = tail;
         newNode->next = head;
         head->prev = newNode;
+        tail->next = newNode;
         head = newNode;
     }
 }
@@ -214,7 +215,11 @@ void clear() {
 int main() {
     init();
 
-    addLast(88);
-    addLast(99);
+    // addLast(88);
+    // addLast(99);
+    // printList();
+
+    addFirst(33);
+    addFirst(66);
     printList();
 }
