@@ -27,20 +27,21 @@ void init() {
     tail = NULL;
 }
 
-// TODO
+// DONE
 int totalNode() {
     Node *cur;
 
     cur = head;
     int total = 0;
-    while (cur != NULL) {
+
+    do {
         cur = cur->next;
         total++;
-    }
+    } while (cur != head);
     return total;
 }
 
-// TODO
+// DONE
 void addFirst(int value) {
     Node *newNode;
     newNode = new Node();
@@ -51,18 +52,19 @@ void addFirst(int value) {
     
     if (head == NULL) {
         head = newNode;
-        head->next = NULL;
-        head->prev = NULL;
+        head->next = head;
+        head->prev = head;
         tail = head;
     } else {
-        newNode->prev = NULL;
+        newNode->prev = tail;
         newNode->next = head;
         head->prev = newNode;
+        tail->next = newNode;
         head = newNode;
     }
 }
 
-// TODO
+// UNGUIDED
 void addMiddle(int position, int value) {
     if (head != NULL) {
         if (position == 0) {
@@ -97,7 +99,7 @@ void addMiddle(int position, int value) {
     }
 }
 
-// TODO
+// DONE
 void addLast(int value) {
     Node *newNode;
     newNode = new Node();
@@ -108,13 +110,14 @@ void addLast(int value) {
     
     if (head == NULL) {
         head = newNode;
-        head->next = NULL;
-        head->prev = NULL;
+        head->next = head;
+        head->prev = head;
         tail = head;
     } else {
         newNode->prev = tail;
-        newNode->next = NULL;
-        tail->next = newNode;
+        newNode->next = head;
+        head->prev = newNode;
+        head->next = newNode;
         tail = newNode;
     }
 }
@@ -124,10 +127,11 @@ void removeFirst() {
     if (head != NULL) {
         Node *delNode;
 
-        if (head->next != NULL) {
+        if (head->next != head) {
             delNode = head;
             head = head->next;
-            head->prev = NULL;
+            tail->next = head;
+            head->prev = tail;
             delete delNode;
         } else {
             head = NULL;
@@ -137,7 +141,7 @@ void removeFirst() {
     }
 }
 
-// TODO
+// DONE
 void removeMiddle(int position) {
     if (head != NULL) {
         if (position == 0) {
@@ -167,15 +171,16 @@ void removeMiddle(int position) {
     }
 }
 
-// TODO
+// DONE
 void removeLast() {
     if (head != NULL) {
         Node *delNode;
 
-        if (tail->prev != NULL) {
+        if (tail->prev != tail) {
             delNode = tail;
             tail = tail->prev;
-            tail->next = NULL;
+            tail->next = head;
+            head->prev = tail;
             delete delNode;
         } else {
             tail = NULL;
@@ -185,14 +190,14 @@ void removeLast() {
     }
 }
 
-// TODO
+// DONE
 void printList() {
     Node *cur;
     cur = head;
-    while (cur != NULL) {
+    do {
         cout << "(" << cur->data << ")" << " ";
         cur = cur->next;
-    }
+    } while (cur != head);
     cout << endl;
 }
 
@@ -212,4 +217,18 @@ void clear() {
 
 int main() {
     init();
+
+    addLast(88);
+    addLast(99);
+    printList();
+
+    addFirst(33);
+    addFirst(66);
+    printList();
+
+    removeFirst();
+    printList();
+
+    removeMiddle(1);
+    printList();
 }
