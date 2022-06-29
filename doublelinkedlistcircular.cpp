@@ -126,10 +126,11 @@ void removeFirst() {
     if (head != NULL) {
         Node *delNode;
 
-        if (head->next != NULL) {
+        if (head->next != head) {
             delNode = head;
             head = head->next;
-            head->prev = NULL;
+            tail->next = head;
+            head->prev = tail;
             delete delNode;
         } else {
             head = NULL;
@@ -221,5 +222,8 @@ int main() {
 
     addFirst(33);
     addFirst(66);
+    printList();
+
+    removeFirst();
     printList();
 }
