@@ -33,10 +33,11 @@ int totalNode() {
 
     cur = head;
     int total = 0;
-    while (cur != NULL) {
+
+    do {
         cur = cur->next;
         total++;
-    }
+    } while (cur != head);
     return total;
 }
 
@@ -228,6 +229,6 @@ int main() {
     removeFirst();
     printList();
 
-    removeLast();
+    removeMiddle(1);
     printList();
 }
