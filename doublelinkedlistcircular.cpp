@@ -192,13 +192,17 @@ void removeLast() {
 
 // DONE
 void printList() {
-    Node *cur;
-    cur = head;
-    do {
-        cout << "(" << cur->data << ")" << " ";
-        cur = cur->next;
-    } while (cur != head);
-    cout << endl;
+    if (head != NULL) {
+        Node *cur;
+        cur = head;
+        do {
+            cout << "(" << cur->data << ")" << " ";
+            cur = cur->next;
+        } while (cur != head);
+        cout << endl;
+    } else {
+        cout << "Empty list :(" << endl;
+    }
 }
 
 // TODO
@@ -206,7 +210,7 @@ void clear() {
     Node *cur, *delNode;
     cur = head;
 
-    while (cur != NULL) {
+    while (cur != head) {
         delNode = cur;
         cur = cur->next;
         delete delNode;
@@ -230,5 +234,8 @@ int main() {
     printList();
 
     removeMiddle(1);
+    printList();
+
+    clear();
     printList();
 }
