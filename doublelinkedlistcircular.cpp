@@ -1,6 +1,18 @@
 #include <iostream>
 using namespace std;
 
+// Prototype fungsi
+void init();
+int totalNode();
+void addFirst(int);
+void addMiddle(int, int);
+void addLast(int);
+void removeFirst();
+void removeMiddle(int);
+void removeLast();
+void printList();
+void clear();
+
 // Deklarasi node
 struct Node {
     int data;
@@ -51,28 +63,6 @@ void addFirst(int value) {
 }
 
 // TODO
-void addLast(int value) {
-    Node *newNode;
-    newNode = new Node();
-
-    newNode->data = value;
-    newNode->prev = NULL;
-    newNode->next = NULL;
-    
-    if (head == NULL) {
-        head = newNode;
-        head->next = NULL;
-        head->prev = NULL;
-        tail = head;
-    } else {
-        newNode->prev = tail;
-        newNode->next = NULL;
-        tail->next = newNode;
-        tail = newNode;
-    }
-}
-
-// TODO
 void addMiddle(int position, int value) {
     if (head != NULL) {
         if (position == 0) {
@@ -108,6 +98,28 @@ void addMiddle(int position, int value) {
 }
 
 // TODO
+void addLast(int value) {
+    Node *newNode;
+    newNode = new Node();
+
+    newNode->data = value;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    
+    if (head == NULL) {
+        head = newNode;
+        head->next = NULL;
+        head->prev = NULL;
+        tail = head;
+    } else {
+        newNode->prev = tail;
+        newNode->next = NULL;
+        tail->next = newNode;
+        tail = newNode;
+    }
+}
+
+// TODO
 void removeFirst() {
     if (head != NULL) {
         Node *delNode;
@@ -119,24 +131,6 @@ void removeFirst() {
             delete delNode;
         } else {
             head = NULL;
-        }
-    } else {
-        cout << "Cannot remove any node. Empty list!" << endl;
-    }
-}
-
-// TODO
-void removeLast() {
-    if (head != NULL) {
-        Node *delNode;
-
-        if (tail->prev != NULL) {
-            delNode = tail;
-            tail = tail->prev;
-            tail->next = NULL;
-            delete delNode;
-        } else {
-            tail = NULL;
         }
     } else {
         cout << "Cannot remove any node. Empty list!" << endl;
@@ -170,6 +164,24 @@ void removeMiddle(int position) {
         }
     } else {
         cout << "Cannot add any node. Empty list!" << endl;
+    }
+}
+
+// TODO
+void removeLast() {
+    if (head != NULL) {
+        Node *delNode;
+
+        if (tail->prev != NULL) {
+            delNode = tail;
+            tail = tail->prev;
+            tail->next = NULL;
+            delete delNode;
+        } else {
+            tail = NULL;
+        }
+    } else {
+        cout << "Cannot remove any node. Empty list!" << endl;
     }
 }
 
