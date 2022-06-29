@@ -64,7 +64,7 @@ void addFirst(int value) {
     }
 }
 
-// UNGUIDED
+// UNGUIDED: Terapkan double linked list circular
 void addMiddle(int position, int value) {
     if (head != NULL) {
         if (position == 0) {
@@ -117,7 +117,7 @@ void addLast(int value) {
         newNode->prev = tail;
         newNode->next = head;
         head->prev = newNode;
-        head->next = newNode;
+        tail->next = newNode;
         tail = newNode;
     }
 }
@@ -234,6 +234,17 @@ int main() {
     printList();
 
     removeMiddle(1);
+    printList();
+
+    removeMiddle(1);
+    printList();
+
+    addLast(88);
+    addLast(99);
+    addLast(88);
+    addLast(99);
+    addLast(88);
+    addLast(99);
     printList();
 
     clear();
