@@ -190,11 +190,10 @@ void removeLast() {
 void printList() {
     Node *cur;
     cur = head;
-    while (cur->next != head) {
+    do {
         cout << "(" << cur->data << ")" << " ";
         cur = cur->next;
-    }
-    cout << "(" << cur->data << ")" << " ";
+    } while (cur != head);
     cout << endl;
 }
 
