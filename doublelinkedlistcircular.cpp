@@ -108,13 +108,14 @@ void addLast(int value) {
     
     if (head == NULL) {
         head = newNode;
-        head->next = NULL;
-        head->prev = NULL;
+        head->next = head;
+        head->prev = head;
         tail = head;
     } else {
         newNode->prev = tail;
-        newNode->next = NULL;
-        tail->next = newNode;
+        newNode->next = head;
+        head->prev = newNode;
+        head->next = newNode;
         tail = newNode;
     }
 }
@@ -189,10 +190,11 @@ void removeLast() {
 void printList() {
     Node *cur;
     cur = head;
-    while (cur != NULL) {
+    while (cur->next != head) {
         cout << "(" << cur->data << ")" << " ";
         cur = cur->next;
     }
+    cout << "(" << cur->data << ")" << " ";
     cout << endl;
 }
 
@@ -212,4 +214,8 @@ void clear() {
 
 int main() {
     init();
+
+    addLast(88);
+    addLast(99);
+    printList();
 }
