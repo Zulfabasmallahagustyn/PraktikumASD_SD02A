@@ -175,10 +175,11 @@ void removeLast() {
     if (head != NULL) {
         Node *delNode;
 
-        if (tail->prev != NULL) {
+        if (tail->prev != tail) {
             delNode = tail;
             tail = tail->prev;
-            tail->next = NULL;
+            tail->next = head;
+            head->prev = tail;
             delete delNode;
         } else {
             tail = NULL;
@@ -225,5 +226,8 @@ int main() {
     printList();
 
     removeFirst();
+    printList();
+
+    removeLast();
     printList();
 }
