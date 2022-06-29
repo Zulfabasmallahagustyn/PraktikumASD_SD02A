@@ -27,7 +27,7 @@ void init() {
     tail = NULL;
 }
 
-// TODO
+// DONE
 int totalNode() {
     Node *cur;
 
@@ -141,7 +141,7 @@ void removeFirst() {
     }
 }
 
-// TODO
+// DONE
 void removeMiddle(int position) {
     if (head != NULL) {
         if (position == 0) {
@@ -171,7 +171,7 @@ void removeMiddle(int position) {
     }
 }
 
-// TODO
+// DONE
 void removeLast() {
     if (head != NULL) {
         Node *delNode;
